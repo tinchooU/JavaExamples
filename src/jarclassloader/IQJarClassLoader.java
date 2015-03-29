@@ -29,11 +29,19 @@ public class IQJarClassLoader extends ClassLoader {
     public Class findClass(String className) throws ClassNotFoundException {
         byte classByte[];
         Class result = null;
-
+   // use a variable that holds the repalced '.' to '/' (not giving the sys CL slashes replaced with dots class name) class name and provide it to the Jar eantry-searching algorythm
+      // after replacing is done:
+      //1. try to load it from cache with its fully qualified name
+      //2. If not present in the cache - try to load the class from the jar (with the processed name) - if there's no entry for it - then give the original dotted name to the sys CL
         result = (Class) classes.get(className); 
         if (result != null) {
             return result;
         }
+        
+        
+        
+       
+        
         try {  
             return findSystemClass(className.replace('/', '.'));  
         } catch (Exception e) {  
