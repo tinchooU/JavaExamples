@@ -9,7 +9,7 @@ public class TestJarLoader {
 
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, ParseException {
 		 ClassLoader cl = new IQJarClassLoader();
-		 JSONParser parser= (JSONParser) cl.loadClass("org/json/simple/parser/JSONParser").newInstance();
+		 JSONParser parser= (JSONParser) cl.loadClass("org.json.simple.parser.JSONParser").newInstance();
 		 
 		 String s="[0,{\"1\":{\"2\":{\"3\":{\"4\":[5,{\"6\":7}]}}}}]";
 		 Object obj=parser.parse(s);
